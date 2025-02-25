@@ -7,11 +7,16 @@ function App() {
     { date: new Date(2021, 3, 10), description: "Auto", amount: 10000 },
     { date: new Date(2021, 4, 25), description: "Trousers", amount: 50 },
   ];
+  const addCostHandler = (cost)=>{
+    console.log(cost)
+
+  } 
+
 
   return (
     <div>
-      <NewCost />
-      <Costs costs={costs}/>
+      <NewCost onAddCost={addCostHandler}/>
+      <Costs  costs={costs}/>
     </div>
   );
 }
