@@ -2,10 +2,9 @@ import "./CostForm.css";
 import { useState } from "react";
 
 const CostForm = (props) => {
- 
-    const [inputName, setInputName] = useState("");
-    const [inputAmount, setInputAmount] = useState("");
-    const [inputDate, setInputDate] = useState("");
+  const [inputName, setInputName] = useState("");
+  const [inputAmount, setInputAmount] = useState("");
+  const [inputDate, setInputDate] = useState("");
 
   const nameChangleHandler = (event) => {
     setInputName(event.target.value);
@@ -20,19 +19,19 @@ const CostForm = (props) => {
   };
 
   const submitHandler = (event) => {
-    event.preventDefault()
+    event.preventDefault();
     const costDate = {
-        name: inputName,
-        amount: inputAmount,
-        date: new Date(inputDate)
-    }
+      description: inputName,
+      amount: inputAmount,
+      date: new Date(inputDate),
+    };
 
-    props.onSaveCostDate(costDate)
+    props.onSaveCostDate(costDate);
 
     setInputAmount("");
     setInputDate("");
     setInputName("");
-  }
+  };
 
   return (
     <form onSubmit={submitHandler}>
