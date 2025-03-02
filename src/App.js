@@ -5,16 +5,31 @@ import NewCost from "./components/NewCost/NewCost";
 const INITIAL_COST = [
   {
     id: "c1",
-    date: new Date(2021, 2, 12),
+    date: new Date(2025, 2, 12),
     description: "Refrigerator",
-    amount: 999,
+    amount: 500,
   },
-  { id: "c2", date: new Date(2021, 3, 10), description: "Auto", amount: 10000 },
+  { id: "c2", 
+    date: new Date(2025, 5, 10), 
+    description: "Auto", 
+    amount: 1000 },
   {
     id: "c3",
-    date: new Date(2021, 4, 25),
-    description: "Trousers",
-    amount: 50,
+    date: new Date(2025, 6, 25),
+    description: "Camera",
+    amount: 1500,
+  },
+  {
+    id: "c4",
+    date: new Date(2024, 4, 25),
+    description: "Auto",
+    amount: 100,
+  },
+  {
+    id: "c5",
+    date: new Date(2024, 6, 25),
+    description: "Auto",
+    amount: 200,
   },
 ];
 
