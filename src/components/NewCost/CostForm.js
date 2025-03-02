@@ -5,16 +5,17 @@ const CostForm = (props) => {
   const [inputName, setInputName] = useState("");
   const [inputAmount, setInputAmount] = useState("");
   const [inputDate, setInputDate] = useState("");
+  const [isFormVisible, setIsFormVisible] = useState(false);
 
-  const nameChangleHandler = (event) => {
+  const nameChangeHandler = (event) => {
     setInputName(event.target.value);
   };
 
-  const amountChangleHandler = (event) => {
+  const amountChangeHandler = (event) => {
     setInputAmount(event.target.value);
   };
 
-  const dateChangleHandler = (event) => {
+  const dateChangeHandler = (event) => {
     setInputDate(event.target.value);
   };
 
@@ -31,14 +32,26 @@ const CostForm = (props) => {
     setInputAmount("");
     setInputDate("");
     setInputName("");
+    setIsFormVisible(false); // Ховаємо форму після відправки
   };
 
-  return (
+  const showFormHandler = () => {
+    setIsFormVisible(true); // Показуємо форму
+  };
+
+  const cancelHandler = () => {
+    setIsFormVisible(false); // Ховаємо форму без збереження
+    setInputAmount(""); // Очищаємо поля (опціонально)
+    setInputDate("");
+    setInputName("");
+  };
+
+  const formContent = (
     <form onSubmit={submitHandler}>
       <div className="new-cost__controls">
         <div className="new-cost__control">
-          <label>Names</label>
-          <input type="text" value={inputName} onChange={nameChangleHandler} />
+          <label>Name</label>
+          <input type="text" value={inputName} onChange={nameChangeHandler} />
         </div>
         <div className="new-cost__control">
           <label>Sum</label>
@@ -47,25 +60,34 @@ const CostForm = (props) => {
             min="1"
             step="1"
             value={inputAmount}
-            onChange={amountChangleHandler}
+            onChange={amountChangeHandler}
           />
         </div>
         <div className="new-cost__control">
-          <label>CostDate</label>
+          <label>Date</label>
           <input
             type="date"
             min="2020-01-01"
-            step="2025-12-31"
+            max="2025-12-31" // Замінюємо step на max
             value={inputDate}
-            onChange={dateChangleHandler}
+            onChange={dateChangeHandler}
           />
         </div>
         <div className="new-cost__actions">
-          <button type="submit">Add consumption</button>
+          <button type="submit">Add cost</button>
+          <button type="button" onClick={cancelHandler}>
+            Cancel
+          </button>
         </div>
       </div>
     </form>
   );
+
+  const buttonAddNewCost = (
+    <button onClick={showFormHandler}>Add a new cost</button>
+  );
+
+  return <div>{isFormVisible ? formContent : buttonAddNewCost}</div>;
 };
 
 export default CostForm;
